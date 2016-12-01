@@ -40,6 +40,15 @@ public class Main {
 			String count = div.getElementsByClass("count").first().text();
 			String site = div.getElementsByTag("a").first().text().toLowerCase();
 
+			// fix malformed sites
+			if (site.startsWith("https://")) {
+				site = site.substring("https://".length());
+				if (site.startsWith("www."))
+					site = site.substring("www.".length());
+				if (site.matches("^.*\\.[a-z]+/$"))
+					site = site.substring(0, site.length() - 1);
+			}
+
 			// write results
 			writer.print(count);
 			writer.print(',');
