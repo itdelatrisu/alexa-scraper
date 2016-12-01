@@ -18,7 +18,7 @@ public class Main {
 		final int SLEEP_MS = 10;
 
 		// write results to file
-		File file = new File(dir, category + ".txt");
+		File file = new File(dir, String.format("%s-500.csv", category.toLowerCase()));
 		PrintWriter writer = new PrintWriter(file, StandardCharsets.UTF_8.name());
 
 		// visit all subpages
@@ -42,7 +42,7 @@ public class Main {
 
 			// write results
 			writer.print(count);
-			writer.print('\t');
+			writer.print(',');
 			writer.print(site);
 			writer.println();
 		}
